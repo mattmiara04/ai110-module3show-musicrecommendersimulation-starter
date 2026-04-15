@@ -95,11 +95,6 @@ It also showed me how bias can easily enter a system. A small or unbalanced data
 
 ---
 
-## 7. `model_card_template.md`
-
-Combines reflection and model card framing from the Module 3 guidance. :contentReference[oaicite:2]{index=2}  
-
-```markdown
 # 🎧 Model Card - Music Recommender Simulation
 
 ## 1. Model Name
