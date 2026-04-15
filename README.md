@@ -66,25 +66,15 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
+I tested the recommender with three different user profiles: Happy Pop, Chill Lofi, and Intense Rock. In the original version, genre had a strong influence on the final ranking, which often pushed songs from the favorite genre to the top even when other features were only a moderate match.
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+I then ran a weight-shift experiment by reducing the genre bonus and increasing the importance of energy similarity. After this change, the recommendations became more sensitive to the user’s target vibe instead of relying as heavily on genre labels. Some songs from outside the favorite genre moved higher because their energy matched the profile more closely.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+This recommender only works on a very small song catalog, so its recommendations are limited by the size and variety of the dataset. It also depends entirely on the selected features, which means it cannot understand lyrics, personal memories, cultural context, or changing taste over time. Another limitation is that hand-chosen weights can over-favor certain features, such as genre or energy, which may make the system feel biased toward one type of song.
 
 ---
 
@@ -99,6 +89,9 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
+This project helped me understand how recommendation systems turn user preferences and item features into a ranked prediction. Even though this system is simple, it still demonstrates the core idea behind real recommenders where it represents data, compares it, and assigns scores. I learned that the features you choose, like genre, mood, and energy, directly control what the model is capable of recommending.
+
+It also showed me how bias can easily enter a system. A small or unbalanced dataset can limit what gets recommended, and the weights in the scoring system can favor certain types of songs over others. This means the system might repeatedly push similar content, even if the user’s actual taste is more complex. It made me realize that real-world recommenders need to be carefully designed to avoid reinforcing narrow patterns.
 
 ---
 
@@ -206,4 +199,5 @@ A few sentences about what you learned:
 - What surprised you about how your system behaved
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
+
 
