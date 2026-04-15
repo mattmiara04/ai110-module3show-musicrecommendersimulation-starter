@@ -11,26 +11,24 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
 
+This project builds a small music recommender system that suggests songs from a CSV catalog based on a user's taste profile. My version uses song features such as genre, mood, energy, tempo, valence, danceability, and acousticness to compare each song against a target listener profile. The system then scores every song, ranks them from best match to worst match, and returns the top recommendations. The goal is to show how a simple AI-style recommender can turn structured data into suggestions while still having limits and biases.
 ---
 
 ## How The System Works
+Each Song in my system is represented by structured features from the CSV file, including genre, mood, energy, tempo_bpm, valence, danceability, and acousticness. These features describe the overall vibe of a track in a simplified way.
 
-Explain your design in plain language.
+The UserProfile stores the listener's target preferences, such as a favorite genre, favorite mood, target energy level, target tempo, target valence, target danceability, and target acousticness. This creates a simple taste profile that the recommender can compare against each song.
 
-Some prompts to answer:
+The Recommended computes a score for every song by checking whether important category features like genre and mood match the user's preferences, and by measuring how close each numeric feature is to the user's target values. Songs with better matches receive higher scores.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
-
-You can include a simple diagram or bullet list if helpful.
+After every song is scored, the system sorts the songs from highest score to lowest score and recommends the top results. This makes the recommender easy to understand because every recommendation comes from a clear scoring rule rather than a hidden black-box model.
 
 ---
 
+My scoring design gives the most importance to genre and overall vibe. Genre match has the highest fixed bonus, followed by mood match. Numeric features such as energy, tempo, valence, danceability, and acousticness use similarity scoring, which means a song gets more points when it is closer to the user's target values. After every song is scored, the recommender sorts the songs by total score and returns the strongest matches.
+
+---
 ## Getting Started
 
 ### Setup
